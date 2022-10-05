@@ -3,41 +3,43 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is my second post.</title>
-    <meta name="description" content="This is a post on My Blog about leveraging agile frameworks.">
+    <title>Instalación de Debian 11 en el equipo de trabajo</title>
+    <meta name="description" content="Hablo sobre la instalación con lvm y los problemas que he tenido.">
 
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/prism-base16-monokai.dark.css">
     <link rel="stylesheet" href="/css/prism-diff.css">
-    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Blog Alejandro Montes">
-    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Blog Alejandro Montes">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Cutreblog">
+    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Cutreblog">
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Blog Alejandro Montes</a></h1>
+      <h1 class="home"><a href="/">Cutreblog</a></h1>
       <ul class="nav">
-        <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/posts/">Archive</a></li>
-        <li class="nav-item"><a href="/about/">About Me</a></li>
+        <li class="nav-item"><a href="/">Inicio</a></li>
+        <li class="nav-item"><a href="/posts/">Blog</a></li>
+        <li class="nav-item"><a href="/about/">Sobre mí</a></li>
       </ul>
     </header>
 
     <main class="tmpl-post">
 
-      <h1>This is my second post.</h1>
+      <h1>Instalación de Debian 11 en el equipo de trabajo</h1>
 
-<time datetime="2018-07-04">04 Jul 2018</time>
-<a href="/tags/number-2/" class="post-tag">number 2</a>
+<time datetime="2022-10-05">05 Oct 2022</time>
+<a href="/tags/aso/" class="post-tag">ASO</a>
 
-<p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-<h2 id="section-header" tabindex="-1">Section Header <a class="direct-link" href="#section-header" aria-hidden="true">#</a></h2>
-<p><a href="/posts/firstpost/">First post</a>
-<a href="/posts/thirdpost/">Third post</a></p>
-<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-<p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+<p>He instalado en mi equipo de trabajo debian 11 con lvm, a continuación, explico de forma detallada como lo he instalado, configurado y los problemas e inconvenientes que me han surgido a lo largo de la instalación. En mi equipo tengo 2 discos duros, un HDD de 1 Tb de capacidad y un SSD de 240 Gb, al poner lvm en mi equipo lo he estructurado de la siguiente manera:</p>
+<p>El SSD esta particionado por la mitad, y una partición está reservada para windows la otra partición la he usado como volumen físico. En el caso del disco duro es exactamente igual está particionado en 2, 500gb cada partición, una de ellas está reservada para los archivos y la otra la he usado como otro volumen físico. He hecho 2 volúmenes de grupo, uno por disco, para que no interfiera en el rendimiento del ssd. En el ssd puse 2 volúmenes lógicos, uno la raíz con 30 Gb y el otro volumen lógico está el boot al que le di 1Gb.
+En el HDD, tengo 2 particiones, una de ellas la he usado como volumen físico, he creado un grupo de volúmenes con este volumen físico y en el grupo de volúmenes he hecho 2 volúmenes lógicos, uno de 100Gb en el que he puesto la raiz y otro volumen lógico de 230Gb en el que he puesto el var.</p>
+<p>Una vez instalado el S.O he tenido los siguientes problemas con los drivers:
+La tarjeta Wi-FI no me funcionaba, para solucionarlo hice el siguiente comando:</p>
+<pre class="language-diff-js"><code class="language-diff-js">sudo apt install firmware-atheros</code></pre>
+<p>por último usé este comando para instalar firmware de linux.</p>
+<pre class="language-diff-js"><code class="language-diff-js">sudo apt-get install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree</code></pre>
 
 <hr>
-<ul><li>Next: <a href="/posts/thirdpost/">This is my third post.</a></li><li>Previous: <a href="/posts/firstpost/">Este es mi primer post.</a></li>
+<ul><li>Previous: <a href="/posts/firstpost/">Creación de un sistema automatizado de instalación.</a></li>
 </ul>
 
     </main>

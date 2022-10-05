@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>Blog Alejandro Montes</title>
-	<subtitle>I am writing about my experiences as a naval navel-gazer.</subtitle>
+	<title>Cutreblog</title>
+	<subtitle>Esto será un blog con las prácticas que hare sobre el curso</subtitle>
 	
 	<link href="https://example.com/feed/feed.xml" rel="self"/>
 	<link href="https://example.com/"/>
-	<updated>2018-09-30T00:00:00Z</updated>
+	<updated>2022-10-05T00:00:00Z</updated>
 	<id>https://example.com/</id>
 	<author>
 		<name>Alejandro Montes Delgado</name>
 		<email>aaleemd11@gmail.com</email>
 	</author>
+	
+	<entry>
+		<title>Instalación de Debian 11 en el equipo de trabajo</title>
+		<link href="https://example.com/posts/secondpost/"/>
+		<updated>2022-10-05T00:00:00Z</updated>
+		<id>https://example.com/posts/secondpost/</id>
+		<content type="html">&lt;p&gt;He instalado en mi equipo de trabajo debian 11 con lvm, a continuación, explico de forma detallada como lo he instalado, configurado y los problemas e inconvenientes que me han surgido a lo largo de la instalación. En mi equipo tengo 2 discos duros, un HDD de 1 Tb de capacidad y un SSD de 240 Gb, al poner lvm en mi equipo lo he estructurado de la siguiente manera:&lt;/p&gt;
+&lt;p&gt;El SSD esta particionado por la mitad, y una partición está reservada para windows la otra partición la he usado como volumen físico. En el caso del disco duro es exactamente igual está particionado en 2, 500gb cada partición, una de ellas está reservada para los archivos y la otra la he usado como otro volumen físico. He hecho 2 volúmenes de grupo, uno por disco, para que no interfiera en el rendimiento del ssd. En el ssd puse 2 volúmenes lógicos, uno la raíz con 30 Gb y el otro volumen lógico está el boot al que le di 1Gb.
+En el HDD, tengo 2 particiones, una de ellas la he usado como volumen físico, he creado un grupo de volúmenes con este volumen físico y en el grupo de volúmenes he hecho 2 volúmenes lógicos, uno de 100Gb en el que he puesto la raiz y otro volumen lógico de 230Gb en el que he puesto el var.&lt;/p&gt;
+&lt;p&gt;Una vez instalado el S.O he tenido los siguientes problemas con los drivers:
+La tarjeta Wi-FI no me funcionaba, para solucionarlo hice el siguiente comando:&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;sudo apt install firmware-atheros&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;por último usé este comando para instalar firmware de linux.&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;sudo apt-get install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree&lt;/code&gt;&lt;/pre&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Creación de un sistema automatizado de instalación.</title>
+		<link href="https://example.com/posts/firstpost/"/>
+		<updated>2022-10-05T00:00:00Z</updated>
+		<id>https://example.com/posts/firstpost/</id>
+		<content type="html">&lt;p&gt;&lt;em&gt;Instalación automatizada basada en medio de almacenamiento extraíble.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Usaremos 7z para descomprimir la iso.&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token coord&quot;&gt;7z x /mnt/Archivos/ISOs/debian-10.6.0-amd64-xfce-CD-1.iso&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P1.8.png&quot; alt=&quot;ASO-P1.8.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;descomprimimos el initrd. Damos permisos a la carpeta que vamos a modificar, ponemos el preseed en el initrd, volvemos a comprimir y ponemos los permisos de antes&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token coord&quot;&gt;7z x initrd.gz&lt;/span&gt;&lt;br /&gt;chmod +w -R install.amd/&lt;br /&gt;echo preseed.cfg | cpio -H newc -o -A -F install.amd/initrd&lt;br /&gt;gzip install.amd/initrd&lt;br /&gt;chmod -w -R install.amd/&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Regeneramos el md5sum.txt&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;chmod +w md5sum.txt&lt;br /&gt;find -follow -type f ! -name md5sum.txt -print0 | xargs -0 md5sum &gt; md5sum.txt&lt;br /&gt;chmod -w md5sum.txt&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Creamos una nueva iso booteable con el comando &lt;em&gt;genisoimage&lt;/em&gt;&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;sudo genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../debian-10.6.0-amd64-xfce-CD-1.iso &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ya tenemos la iso lista, ahora haremos una instalación desatendida. Ponemos el disco con la iso e iniciamos la máquina. Le damos a &lt;em&gt;Advanced options&lt;/em&gt;.
+&lt;img src=&quot;https://example.com/img/ASO-P1.9.png&quot; alt=&quot;imagen&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Ahora le damos a &lt;em&gt;Automated install&lt;/em&gt; y empezará la instalación
+&lt;img src=&quot;https://example.com/img/ASO-P1.10.png&quot; alt=&quot;imagen&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;ponemos contraseña de root y del usuario(me da problemas en el preseed y he decidido ponerla antes de la instalación).
+&lt;img src=&quot;https://example.com/img/ASO-P1.11.png&quot; alt=&quot;imagen&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Ahora empieza la instalación desatendida.
+&lt;img src=&quot;https://example.com/img/ASO-P1.12.png&quot; alt=&quot;imagen&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Aquí muestro la salida del comando &lt;em&gt;df -h&lt;/em&gt;
+&lt;img src=&quot;https://example.com/img/ASO-P1.14.png&quot; alt=&quot;imagen&quot; /&gt;&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>This is my fourth post.</title>
@@ -34,33 +78,6 @@
 &lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
 &lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/thirdpost/#section-header&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-</content>
-	</entry>
-	
-	<entry>
-		<title>This is my second post.</title>
-		<link href="https://example.com/posts/secondpost/"/>
-		<updated>2018-07-04T00:00:00Z</updated>
-		<id>https://example.com/posts/secondpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/secondpost/#section-header&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://example.com/posts/firstpost/&quot;&gt;First post&lt;/a&gt;
-&lt;a href=&quot;https://example.com/posts/thirdpost/&quot;&gt;Third post&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-</content>
-	</entry>
-	
-	<entry>
-		<title>Este es mi primer post.</title>
-		<link href="https://example.com/posts/firstpost/"/>
-		<updated>2018-05-01T00:00:00Z</updated>
-		<id>https://example.com/posts/firstpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/firstpost/#section-header&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;// this is a command&lt;br /&gt;function myCommand() {&lt;br /&gt;&lt;span class=&quot;token inserted-sign inserted language-js&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;	&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;	counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;br /&gt;&lt;/span&gt;}&lt;br /&gt;&lt;br /&gt;// Test with a line break above this line.&lt;br /&gt;console.log(&#39;Test&#39;);&lt;/code&gt;&lt;/pre&gt;
 </content>
 	</entry>
 </feed>

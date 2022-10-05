@@ -2,16 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://example.com/posts/firstpost/</loc>
-    <lastmod>2018-05-01</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/posts/secondpost/</loc>
-    <lastmod>2018-07-04</lastmod>
-  </url>
-  
-  <url>
     <loc>https://example.com/posts/thirdpost/</loc>
     <lastmod>2018-08-24</lastmod>
   </url>
@@ -22,17 +12,17 @@
   </url>
   
   <url>
+    <loc>https://example.com/posts/firstpost/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/secondpost/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
     <loc>https://example.com/about/</loc>
-    <lastmod>2022-10-05</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/</loc>
-    <lastmod>2022-10-05</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/tags/</loc>
     <lastmod>2022-10-05</lastmod>
   </url>
   
@@ -42,7 +32,22 @@
   </url>
   
   <url>
-    <loc>https://example.com/tags/another-tag/</loc>
+    <loc>https://example.com/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/page-list/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/aso/</loc>
     <lastmod>2022-10-05</lastmod>
   </url>
   
@@ -52,17 +57,7 @@
   </url>
   
   <url>
-    <loc>https://example.com/tags/number-2/</loc>
-    <lastmod>2022-10-05</lastmod>
-  </url>
-  
-  <url>
     <loc>https://example.com/tags/posts-with-two-tags/</loc>
-    <lastmod>2022-10-05</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://example.com/page-list/</loc>
     <lastmod>2022-10-05</lastmod>
   </url>
 </urlset>

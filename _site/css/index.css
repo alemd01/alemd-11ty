@@ -4,7 +4,8 @@
   --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
 }
 
-/* Theme colors */
+/*#e0e0e0 Theme colors */
+/*#C0C0C0*/
 :root {
   --color-gray-20: #e0e0e0;
   --color-gray-50: #C0C0C0;
@@ -24,10 +25,10 @@
     --color-gray-90: #dad8d8;
 
     /* --text-color is assigned to --color-gray-_ above */
-    --text-color-link: #1493fb;
-    --text-color-link-visited: #a6a6f8;
+    --text-color-link: /*#1493fb*/#8e8e8e;
+    --text-color-link-visited: /*#a6a6f8*/#929fb9;
 
-    --background-color: #15202b;
+    --background-color: /*#15202b*/#2d2f2f;
   }
 }
 

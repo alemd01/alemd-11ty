@@ -1,10 +1,10 @@
 {
-  "title": "Blog Alejandro Montes",
+  "title": "Cutreblog",
   "url": "https://example.com/",
   "language": "es",
   "description": "Blog con prácticas que iré haciendo a lo largo del curso.",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "Esto será un blog con las prácticas que hare sobre el curso",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://example.com/"

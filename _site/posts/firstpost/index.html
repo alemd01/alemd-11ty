@@ -3,40 +3,55 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Este es mi primer post.</title>
-    <meta name="description" content="Este post es una prueba de esta página en producción.">
+    <title>Creación de un sistema automatizado de instalación.</title>
+    <meta name="description" content="Creación de un sistema automatizado de instalación. Se deberá configurar el sistema para que se responda automáticamente a todos los item en la instalación. Las diferentes contraseñas deberán codificarse para que no aparezcan en texto plano. Se trabajará con un esquema lvm creando volúmenes lógicos /, home y var.">
 
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/prism-base16-monokai.dark.css">
     <link rel="stylesheet" href="/css/prism-diff.css">
-    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Blog Alejandro Montes">
-    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Blog Alejandro Montes">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Cutreblog">
+    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Cutreblog">
   </head>
   <body>
     <header>
-      <h1 class="home"><a href="/">Blog Alejandro Montes</a></h1>
+      <h1 class="home"><a href="/">Cutreblog</a></h1>
       <ul class="nav">
-        <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/posts/">Archive</a></li>
-        <li class="nav-item"><a href="/about/">About Me</a></li>
+        <li class="nav-item"><a href="/">Inicio</a></li>
+        <li class="nav-item"><a href="/posts/">Blog</a></li>
+        <li class="nav-item"><a href="/about/">Sobre mí</a></li>
       </ul>
     </header>
 
     <main class="tmpl-post">
 
-      <h1>Este es mi primer post.</h1>
+      <h1>Creación de un sistema automatizado de instalación.</h1>
 
-<time datetime="2018-05-01">01 May 2018</time>
-<a href="/tags/another-tag/" class="post-tag">another tag</a>
+<time datetime="2022-10-05">05 Oct 2022</time>
+<a href="/tags/aso/" class="post-tag">ASO</a>
 
-<p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-<h2 id="section-header" tabindex="-1">Section Header <a class="direct-link" href="#section-header" aria-hidden="true">#</a></h2>
-<p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-<pre class="language-diff-js"><code class="language-diff-js">// this is a command<br>function myCommand() {<br><span class="token inserted-sign inserted language-js"><span class="token prefix inserted">+</span>	<span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><br><span class="token prefix inserted">+</span>	counter<span class="token operator">++</span><span class="token punctuation">;</span><br></span>}<br><br>// Test with a line break above this line.<br>console.log('Test');</code></pre>
+<p><em>Instalación automatizada basada en medio de almacenamiento extraíble.</em></p>
+<p>Usaremos 7z para descomprimir la iso.</p>
+<pre class="language-diff-js"><code class="language-diff-js"><span class="token coord">7z x /mnt/Archivos/ISOs/debian-10.6.0-amd64-xfce-CD-1.iso</span></code></pre>
+<p><img src="/img/ASO-P1.8.png" alt="ASO-P1.8.png"></p>
+<p>descomprimimos el initrd. Damos permisos a la carpeta que vamos a modificar, ponemos el preseed en el initrd, volvemos a comprimir y ponemos los permisos de antes</p>
+<pre class="language-diff-js"><code class="language-diff-js"><span class="token coord">7z x initrd.gz</span><br>chmod +w -R install.amd/<br>echo preseed.cfg | cpio -H newc -o -A -F install.amd/initrd<br>gzip install.amd/initrd<br>chmod -w -R install.amd/</code></pre>
+<p>Regeneramos el md5sum.txt</p>
+<pre class="language-diff-js"><code class="language-diff-js">chmod +w md5sum.txt<br>find -follow -type f ! -name md5sum.txt -print0 | xargs -0 md5sum > md5sum.txt<br>chmod -w md5sum.txt</code></pre>
+<p>Creamos una nueva iso booteable con el comando <em>genisoimage</em></p>
+<pre class="language-diff-js"><code class="language-diff-js">sudo genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../debian-10.6.0-amd64-xfce-CD-1.iso </code></pre>
+<p>Ya tenemos la iso lista, ahora haremos una instalación desatendida. Ponemos el disco con la iso e iniciamos la máquina. Le damos a <em>Advanced options</em>.
+<img src="/img/ASO-P1.9.png" alt="imagen"></p>
+<p>Ahora le damos a <em>Automated install</em> y empezará la instalación
+<img src="/img/ASO-P1.10.png" alt="imagen"></p>
+<p>ponemos contraseña de root y del usuario(me da problemas en el preseed y he decidido ponerla antes de la instalación).
+<img src="/img/ASO-P1.11.png" alt="imagen"></p>
+<p>Ahora empieza la instalación desatendida.
+<img src="/img/ASO-P1.12.png" alt="imagen"></p>
+<p>Aquí muestro la salida del comando <em>df -h</em>
+<img src="/img/ASO-P1.14.png" alt="imagen"></p>
 
 <hr>
-<ul><li>Next: <a href="/posts/secondpost/">This is my second post.</a></li>
+<ul><li>Next: <a href="/posts/secondpost/">Instalación de Debian 11 en el equipo de trabajo</a></li><li>Previous: <a href="/posts/fourthpost/">This is my fourth post.</a></li>
 </ul>
 
     </main>

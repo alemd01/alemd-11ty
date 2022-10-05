@@ -1,0 +1,14 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+{% set maxPosts = collections.posts.length | min(3) %}
+<h1>Ultimos {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
+
+{% set postslist = collections.posts | head(-3) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.njk" %}
+
+<p>Puedes encontrar más post en <a href="{{ '/posts/' | url }}">Mis post</a>.</p>

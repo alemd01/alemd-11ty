@@ -5,7 +5,7 @@
 	
 	<link href="https://example.com/feed/feed.xml" rel="self"/>
 	<link href="https://example.com/"/>
-	<updated>2022-10-05T00:00:00Z</updated>
+	<updated>2022-10-10T00:00:00Z</updated>
 	<id>https://example.com/</id>
 	<author>
 		<name>Alejandro Montes Delgado</name>
@@ -13,26 +13,116 @@
 	</author>
 	
 	<entry>
-		<title>Instalación de Debian 11 en el equipo de trabajo</title>
-		<link href="https://example.com/posts/secondpost/"/>
+		<title>Prueba: Introducción a la implantación de aplicaciones web.</title>
+		<link href="https://example.com/posts/introduccion-a-IAW/"/>
+		<updated>2022-10-10T00:00:00Z</updated>
+		<id>https://example.com/posts/introduccion-a-IAW/</id>
+		<content type="html">&lt;h1 id=&quot;alejandro-montes-delgado&quot; tabindex=&quot;-1&quot;&gt;Alejandro Montes Delgado. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/introduccion-a-IAW/#alejandro-montes-delgado&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ipasen.png&quot; alt=&quot;ipasen.png&quot; /&gt;&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Talleres unidad 1</title>
+		<link href="https://example.com/posts/talleres-iaw/"/>
 		<updated>2022-10-05T00:00:00Z</updated>
-		<id>https://example.com/posts/secondpost/</id>
-		<content type="html">&lt;p&gt;He instalado en mi equipo de trabajo debian 11 con lvm, a continuación, explico de forma detallada como lo he instalado, configurado y los problemas e inconvenientes que me han surgido a lo largo de la instalación. En mi equipo tengo 2 discos duros, un HDD de 1 Tb de capacidad y un SSD de 240 Gb, al poner lvm en mi equipo lo he estructurado de la siguiente manera:&lt;/p&gt;
-&lt;p&gt;El SSD esta particionado por la mitad, y una partición está reservada para windows la otra partición la he usado como volumen físico. En el caso del disco duro es exactamente igual está particionado en 2, 500gb cada partición, una de ellas está reservada para los archivos y la otra la he usado como otro volumen físico. He hecho 2 volúmenes de grupo, uno por disco, para que no interfiera en el rendimiento del ssd. En el ssd puse 2 volúmenes lógicos, uno la raíz con 30 Gb y el otro volumen lógico está el boot al que le di 1Gb.
-En el HDD, tengo 2 particiones, una de ellas la he usado como volumen físico, he creado un grupo de volúmenes con este volumen físico y en el grupo de volúmenes he hecho 2 volúmenes lógicos, uno de 100Gb en el que he puesto la raiz y otro volumen lógico de 230Gb en el que he puesto el var.&lt;/p&gt;
-&lt;p&gt;Una vez instalado el S.O he tenido los siguientes problemas con los drivers:
-La tarjeta Wi-FI no me funcionaba, para solucionarlo hice el siguiente comando:&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;sudo apt install firmware-atheros&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;por último usé este comando para instalar firmware de linux.&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;sudo apt-get install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree&lt;/code&gt;&lt;/pre&gt;
+		<id>https://example.com/posts/talleres-iaw/</id>
+		<content type="html">&lt;p&gt;##TALLER 1: Introducción a git y GitHub&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Una captura de pantalla donde se vea que has creado el repositorio.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/TALLER1-IAW.png&quot; alt=&quot;TALLER1-IAW.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;El contenido del fichero .git/config para que se vea que has clonado el repositorio con la URL ssh.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;[core]&lt;br /&gt;	repositoryformatversion = 0&lt;br /&gt;	filemode = true&lt;br /&gt;	bare = false&lt;br /&gt;	logallrefupdates = true&lt;br /&gt;[remote &quot;origin&quot;]&lt;br /&gt;	url = git@github.com:alemd01/2ASIR.git&lt;br /&gt;	fetch = +refs/heads/*:refs/remotes/origin/*&lt;br /&gt;[branch &quot;main&quot;]&lt;br /&gt;	remote = origin&lt;br /&gt;	merge = refs/heads/main&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;La salida de la instrucción git log para ver los commits que has realizado (debe aparecer como autor tu nombre completo).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;commit 421dec9a6988d91a1ac7c871ca9e4b042e803df7&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:28:31 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He borrado el fichero prueba&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;txt&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit d584d99ece167dedc0b8b649471c11a453652d2b&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:27:57 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He cambiado el nombre al fichero&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit 2793b586ee7a7d89184f7313ec4d92ced9f2c64a&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:26:59 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He modificado el fichero prueba&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;txt&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit e6195890e08484aa86eb1fc9c7c93d8448328c33&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:17:13 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He creado el fichero prueba&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;txt&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit 2093f3e2515054c1d7223d79b373c89526beebc4&lt;br /&gt;Author: alemd01 &amp;lt;78356101+alemd01@users.noreply.github.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:15:13 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; Initial commit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;buscar información para crear un nuevo repositorio llamado prueba2_tu_nombre. en esta ocasión, crea primero el repositorio local (usando git init) y luego busca información para sincronizarlo y crear el repositorio remoto en GitHub. Comenta los pasos que has realizado y manda alguna prueba de funcionamiento.
+Primero hay que crear un repositorio en Github, después hay que crear un directorio en nuestra máquina local. Creamos por ejemplo el archivo README. Entramos en la carpeta y hacemos un git init.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    mkdir prueba2_AlejandroMontes&lt;br /&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    cd prueba2_AlejandroMontes&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    echo &lt;span class=&quot;token string&quot;&gt;&quot;# prueba2_AlejandroMontes&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;README&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;md&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/taller1-2.png&quot; alt=&quot;taller1-2.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Una vez hecho esto, hacemos un git add y un commit.&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git add &lt;span class=&quot;token constant&quot;&gt;README&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;md&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git commit &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;m &lt;span class=&quot;token string&quot;&gt;&quot;primer commit&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/taller1-3.png&quot; alt=&quot;taller1-3.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Ahora usamos este comando&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git branch &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;M&lt;/span&gt; main&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A continuación, tenemos que hacer un git remote add origin&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git remote add origin git@github&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;com&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;alemd01&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;prueba2_AlejandroMontes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;git&lt;br /&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;por último hacemos un git push&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;     git push &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;u origin main&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/taller1-4.png&quot; alt=&quot;taller1-4.png&quot; /&gt;&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Talleres unidad 1</title>
+		<link href="https://example.com/posts/talleres-ansible/"/>
+		<updated>2022-10-05T00:00:00Z</updated>
+		<id>https://example.com/posts/talleres-ansible/</id>
+		<content type="html">&lt;h1 id=&quot;taller-1-ansible-playbook-sencillo&quot; tabindex=&quot;-1&quot;&gt;Taller 1: Ansible - Playbook sencillo &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/talleres-ansible/#taller-1-ansible-playbook-sencillo&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Entrega los ficheros: site.yaml, hosts y template/index.j2.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&quot;https://example.com/files/site.yaml&quot;&gt;site.yml&lt;/a&gt; &lt;a href=&quot;https://example.com/files/host&quot;&gt;host&lt;/a&gt; &lt;a href=&quot;https://example.com/files/index.j2&quot;&gt;index.j2&lt;/a&gt;&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Entrega una captura de pantalla donde se vea que se ha finalizado la ejecución del playbook.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI.png&quot; alt=&quot;SRI.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Responde: ¿Cómo se llama la propiedad que permite que las tareas que ya se han realizado no se vuelvan a ejecutar?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Idempotencia&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Captura de pantalla, donde se vea el fichero foo.txt en el servidor configurado.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI2.png&quot; alt=&quot;SRI2.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Captura de pantalla donde se vea el acceso desde el navegador al servidor web, y se vea el contenido del fichero index.html.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI3.png&quot; alt=&quot;SRI3.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;Entrega la URL de tu repositorio con el que estas trabajando.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/alemd01/taller_ansible_vagrant/&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;taller-2-ansible-playbook-con-roles&quot; tabindex=&quot;-1&quot;&gt;Taller 2: Ansible - Playbook con roles &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/talleres-ansible/#taller-2-ansible-playbook-con-roles&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Entrega una captura de pantalla donde se vea que se ha finalizado la ejecución del playbook.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.1.png&quot; alt=&quot;SRI-T2.1.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Captura de pantalla donde se vea el acceso desde el navegador al servidor web, y se vea el contenido del fichero index.html.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.2.png&quot; alt=&quot;SRI-T2.2.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Captura de pantalla donde se vea el acceso a la base de datos.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.3.png&quot; alt=&quot;SRI-T2.3.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Realiza un cambio en la receta que necesite ejecutar el reinicio del servicio. Ejecuta de nuevo el playbook y comprueba que se ha ejecutado el handler correspondiente.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.4.png&quot; alt=&quot;SRI-T2.4.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Entrega la URL de tu repositorio con el que estás trabajando.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/alemd01/taller_ansible_vagrant/&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;taller-3-vagrant-creacion-de-una-maquina-virtual&quot; tabindex=&quot;-1&quot;&gt;Taller 3: Vagrant - Creación de una máquina virtual &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/talleres-ansible/#taller-3-vagrant-creacion-de-una-maquina-virtual&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;El fichero Vagrantfile con el que has trabajado.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Subido el &lt;a href=&quot;https://example.com/posts/talleres-ansible/Vagrantfile&quot;&gt;fichero&lt;/a&gt;&lt;/p&gt;
 </content>
 	</entry>
 	
 	<entry>
 		<title>Creación de un sistema automatizado de instalación.</title>
-		<link href="https://example.com/posts/firstpost/"/>
+		<link href="https://example.com/posts/instalacion-pxe-preseed/"/>
 		<updated>2022-10-05T00:00:00Z</updated>
-		<id>https://example.com/posts/firstpost/</id>
+		<id>https://example.com/posts/instalacion-pxe-preseed/</id>
 		<content type="html">&lt;p&gt;&lt;em&gt;Instalación automatizada basada en medio de almacenamiento extraíble.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Usaremos 7z para descomprimir la iso.&lt;/p&gt;
 &lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token coord&quot;&gt;7z x /mnt/Archivos/ISOs/debian-10.6.0-amd64-xfce-CD-1.iso&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -57,27 +147,18 @@ La tarjeta Wi-FI no me funcionaba, para solucionarlo hice el siguiente comando:&
 	</entry>
 	
 	<entry>
-		<title>This is my fourth post.</title>
-		<link href="https://example.com/posts/fourthpost/"/>
-		<updated>2018-09-30T00:00:00Z</updated>
-		<id>https://example.com/posts/fourthpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/fourthpost/#section-header&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-</content>
-	</entry>
-	
-	<entry>
-		<title>This is my third post.</title>
-		<link href="https://example.com/posts/thirdpost/"/>
-		<updated>2018-08-24T00:00:00Z</updated>
-		<id>https://example.com/posts/thirdpost/</id>
-		<content type="html">&lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;// this is a command&lt;br /&gt;function myCommand() {&lt;br /&gt;&lt;span class=&quot;token inserted-sign inserted language-js&quot;&gt;&lt;span class=&quot;token prefix inserted&quot;&gt;+&lt;/span&gt;	&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; counter &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token deleted-sign deleted language-js&quot;&gt;&lt;span class=&quot;token prefix deleted&quot;&gt;-&lt;/span&gt;	counter&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;}&lt;br /&gt;&lt;br /&gt;// Test with a line break above this line.&lt;br /&gt;console.log(&#39;Test&#39;);&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot; tabindex=&quot;-1&quot;&gt;Section Header &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/thirdpost/#section-header&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
+		<title>Instalación de Debian 11 en el equipo de trabajo</title>
+		<link href="https://example.com/posts/instalacion-debian-11/"/>
+		<updated>2022-10-05T00:00:00Z</updated>
+		<id>https://example.com/posts/instalacion-debian-11/</id>
+		<content type="html">&lt;p&gt;He instalado en mi equipo de trabajo debian 11 con lvm, a continuación, explico de forma detallada como lo he instalado, configurado y los problemas e inconvenientes que me han surgido a lo largo de la instalación. En mi equipo tengo 2 discos duros, un HDD de 1 Tb de capacidad y un SSD de 240 Gb, al poner lvm en mi equipo lo he estructurado de la siguiente manera:&lt;/p&gt;
+&lt;p&gt;El SSD esta particionado por la mitad, y una partición está reservada para windows la otra partición la he usado como volumen físico. En el caso del disco duro es exactamente igual está particionado en 2, 500gb cada partición, una de ellas está reservada para los archivos y la otra la he usado como otro volumen físico. He hecho 2 volúmenes de grupo, uno por disco, para que no interfiera en el rendimiento del ssd. En el ssd puse 2 volúmenes lógicos, uno la raíz con 30 Gb y el otro volumen lógico está el boot al que le di 1Gb.
+En el HDD, tengo 2 particiones, una de ellas la he usado como volumen físico, he creado un grupo de volúmenes con este volumen físico y en el grupo de volúmenes he hecho 2 volúmenes lógicos, uno de 100Gb en el que he puesto la raiz y otro volumen lógico de 230Gb en el que he puesto el var.&lt;/p&gt;
+&lt;p&gt;Una vez instalado el S.O he tenido los siguientes problemas con los drivers:
+La tarjeta Wi-FI no me funcionaba, para solucionarlo hice el siguiente comando:&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;sudo apt install firmware-atheros&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;por último usé este comando para instalar firmware de linux.&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;sudo apt-get install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree&lt;/code&gt;&lt;/pre&gt;
 </content>
 	</entry>
 </feed>

@@ -4,6 +4,7 @@ eleventyNavigation:
   key: Inicio
   order: 1
 ---
+
 {% set maxPosts = collections.posts.length | min(3) %}
 <h1>Ultimos {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
 
